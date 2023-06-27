@@ -1,0 +1,34 @@
+#! /bin/sh
+
+sleep 1 # wait for X window system to fully initialize
+pkill sxhkd
+pgrep -x sxhkd > /dev/null || sxhkd -d >> /home/markus/.log/sxhkd.log 2>&1 &
+
+bspc monitor eDP-1 -d 1 2 3 4 5
+bspc monitor HDMI-1 -d 6 7 8 9 10
+
+bspc config border_width         1
+bspc config window_gap           1
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+#AutoStart
+# run the xrandr command if an external monitor is connected to the
+# laptop.  This must be executed before the polybar command, so that
+if [ -x /bin/own_script_bspwm_laptop_dual_monitor ];then
+    own_script_bspwm_laptop_dual_monitor
+fi
+xinput --set-prop 14 324 1
+
+picom &
+xfce4-volumed &
+feh --bg-fil ~/Pictures/Wallpaper/gruvbox.jpg
+$HOME/.config/polybar/forest/launch.sh
