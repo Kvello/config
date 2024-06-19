@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-    gnome-terminal
+    kitty
 # program launcher
 super + @space
     rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/forest/scripts/rofi/launcher.rasi
@@ -118,4 +118,7 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 super + r
-    $HOME/.config/sxhkd_scripts/reload_screen_layout.sh
+    $HOME/.config/wallpaper_config.sh
+super + alt + {shift+t,t}
+    bspc config window_gap {15,0}
+    bspc config gapless_monocle{false,true}
