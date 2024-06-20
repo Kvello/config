@@ -1,0 +1,2 @@
+Install noto font with:
+    sudo apt-get -y install fonts-noto

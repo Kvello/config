@@ -1,0 +1,17 @@
+# ROS 2
+source /opt/ros/humble/setup.bash
+
+
+export ROS_DOMAIN_ID=30
+export ROS_LOCALHOST_ONLY=1
+export TURTLEBOT3_MODEL=burger
+source /usr/share/gazebo/setup.sh
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+source /usr/share/colcon_cd/function/colcon_cd.sh
+export _colcon_cd_root=/opt/ros/humble/
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
